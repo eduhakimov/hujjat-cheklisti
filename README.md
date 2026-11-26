@@ -34,7 +34,7 @@ Stipendiya, grant, konferensiya, attestatsiya va xorijga safar uchun hujjat pake
 ## O'rnatish
 
 1. [**HujjatCheklisti.exe**](https://github.com/eduhakimov/hujjat-cheklisti/releases/latest/download/HujjatCheklisti.exe) faylini yuklab oling.
-2. Faylni ishga tushiring — o'rnatish shart emas.
+2. Faylni ishga tushiring, o'rnatish shart emas.
 3. Windows SmartScreen ogohlantirsa: **Batafsil → Baribir ishga tushirish**.
 
 **Tizim talablari:** Windows 10 (1809+) / Windows 11, x64
@@ -71,7 +71,7 @@ Track document packages for scholarships, grants, conferences, attestation and t
 
 ## Muallif / Author
 
-**Bahtiyorjon Hakimov** (Hakimov Bahtiyorjon Muzaffar o'g'li) — [github.com/eduhakimov](https://github.com/eduhakimov)
+**Bahtiyorjon Hakimov** (Hakimov Bahtiyorjon Muzaffar o'g'li), [github.com/eduhakimov](https://github.com/eduhakimov)
 
 © 2026 Bahtiyorjon Hakimov. Barcha huquqlar himoyalangan. / Все права защищены. / All rights reserved.
 Batafsil: [LICENSE](LICENSE) · Uchinchi tomon komponentlari: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)

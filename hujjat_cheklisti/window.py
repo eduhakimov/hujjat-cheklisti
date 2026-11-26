@@ -1283,7 +1283,9 @@ class MainWindow(BaseMainWindow):
         self.db.seed_builtin(language())
         demo_pid = None
         if is_demo():
-            demo_pid = load_demo(self.db, data)
+            if not self.db.get_meta("demo"):
+                self.db.set_meta("demo", load_demo(self.db, data))
+            demo_pid = int(self.db.get_meta("demo"))
 
         act = QAction(tr("new_package"), self)
         act.setShortcut("Ctrl+N")

@@ -38,7 +38,7 @@ register({
 
 
 # --------------------------------------------------------------------------- demo / ma'lumotlar papkasi
-_DEMO_DIR: Optional[Path] = None
+_DEMO_DIRS = {}
 
 
 def is_demo() -> bool:
@@ -48,11 +48,12 @@ def is_demo() -> bool:
 
 def app_data_dir(slug: str) -> Path:
     """Haqiqiy rejimda %APPDATA%/BahtiyorSoft/<slug>, skrinshot rejimida vaqtinchalik papka."""
-    global _DEMO_DIR
     if is_demo() or "pytest" in sys.modules:
-        if _DEMO_DIR is None:
-            _DEMO_DIR = Path(tempfile.mkdtemp(prefix=f"{slug}_demo_"))
-        return _DEMO_DIR
+        from uzkit.i18n import language
+        lang = language()                      # har bir til uchun alohida namunaviy baza
+        if lang not in _DEMO_DIRS:
+            _DEMO_DIRS[lang] = Path(tempfile.mkdtemp(prefix=f"{slug}_demo_{lang}_"))
+        return _DEMO_DIRS[lang]
     return data_dir(slug)
 
 

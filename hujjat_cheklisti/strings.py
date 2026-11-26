@@ -127,7 +127,7 @@ STRINGS = {
     "templates": _t("Shablonlar ro'yxati", "Список шаблонов", "Template list"),
     "new_template": _t("+ Yangi shablon", "+ Новый шаблон", "+ New template"),
     "new_template_name": _t("Yangi shablon", "Новый шаблон", "New template"),
-    "restore_builtin": _t("Standartlarini tiklash", "Восстановить стандартные", "Restore built-in"),
+    "restore_builtin": _t("Standartni tiklash", "Сбросить шаблоны", "Reset built-in"),
     "tpl_edit": _t("Shablonni tahrirlash", "Редактирование шаблона", "Edit template"),
     "tpl_items_hint": _t("Hujjatlar (har qatorda bittadan):", "Документы (по одному в строке):",
                          "Documents (one per line):"),
