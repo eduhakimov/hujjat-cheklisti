@@ -158,3 +158,27 @@ def test_autostart_mock():
     assert ui_extra.is_autostart("X", r)
     assert ui_extra.set_autostart("X", False, "", r)
     assert not ui_extra.is_autostart("X", r)
+
+
+def test_ui_flows():
+    from PySide6.QtWidgets import QApplication
+    QApplication.instance() or QApplication([])
+    from uzkit import app as appmod
+    from uzkit.settings import Settings
+    appmod.META = appmod.load_meta()
+    appmod.SETTINGS = Settings(appmod.META["slug"] + "_test")
+    from hujjat_cheklisti import window
+    w = window.MainWindow()
+    pid = window.load_demo(w.db, w.db.path.parent)
+    w.data_changed()
+    w.open_package(pid)
+    w.packages.table.selectRow(2)
+    w.packages.set_status("submitted")
+    assert w.db.items(pid)[2]["status"] == "submitted"
+    w.packages.move(1)
+    window.PackageDialog(w).close()
+    window.ItemDialog(w, w.db.items(pid)[0]).close()
+    w.check_reminders()
+    for i in range(4):
+        w.set_page(i)
+    w.close()
