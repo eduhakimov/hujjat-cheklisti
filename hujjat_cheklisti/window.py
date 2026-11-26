@@ -1307,7 +1307,7 @@ class MainWindow(BaseMainWindow):
         self.packages.reload(demo_pid)
 
         self._hint_shown = False
-        if not is_demo() and "--selftest" not in sys.argv:
+        if not is_demo() and "--selftest" not in sys.argv and "pytest" not in sys.modules:
             self.tray.show()
             self.apply_tray_mode()
             self.timer = QTimer(self)
