@@ -1,0 +1,88 @@
+{
+  "slug": "hujjat-cheklisti",
+  "exe_name": "HujjatCheklisti",
+  "version": "1.0.0",
+  "accent": "#6d28d9",
+  "icon_text": "HC",
+  "folder": "Hujjat cheklisti",
+  "name": {
+    "uz": "Stipendiya va hujjat chek-listi",
+    "ru": "Чек-лист документов и стипендий",
+    "en": "Scholarship & Document Checklist"
+  },
+  "description": {
+    "uz": "Stipendiya, grant, konferensiya, attestatsiya va xorijga safar uchun hujjat paketlarini kuzatuvchi dastur: tayyor shablonlar, har bir hujjat holati, biriktirilgan fayllar, muddat eslatmalari, PDF/Excel eksport va topshirish papkasini bir bosishda yig'ish.",
+    "ru": "Программа для отслеживания пакетов документов на стипендии, гранты, конференции, аттестацию и поездки: готовые шаблоны, статус каждого документа, прикреплённые файлы, напоминания о сроках, экспорт в PDF/Excel и сбор папки для подачи одним щелчком.",
+    "en": "Track document packages for scholarships, grants, conferences, attestation and travel abroad: ready templates, per-document status, attached files, deadline reminders, PDF/Excel export and one-click submission folder."
+  },
+  "features": {
+    "uz": [
+      "5 ta tayyor shablon (Prezident stipendiyasi, ilmiy grant, konferensiya, attestatsiya, xorijga hujjat) — tahrirlanadi",
+      "Hujjat holatlari: kerak / tayyorlanmoqda / tayyor / topshirildi",
+      "Faylni biriktirish (sudrab tashlash), ochish va papkasini ko'rsatish",
+      "Har bir paket uchun tayyorlik halqasi va qolgan kunlar",
+      "Muddatdan N kun oldin Windows bildirishnomasi (tray)",
+      "Chek-listni PDF va Excel ga eksport",
+      "Barcha fayllarni raqamlangan holda bitta papkaga yig'ish",
+      "O'zbek, rus, ingliz tillari; yorug' va qorong'i mavzu; to'liq offline"
+    ],
+    "ru": [
+      "5 готовых шаблонов (Президентская стипендия, грант, конференция, аттестация, выезд за рубеж) — редактируются",
+      "Статусы: нужно / готовится / готово / сдано",
+      "Прикрепление файлов (перетаскиванием), открытие файла и папки",
+      "Кольцо готовности и оставшиеся дни для каждого пакета",
+      "Уведомления Windows за N дней до срока (трей)",
+      "Экспорт чек-листа в PDF и Excel",
+      "Сбор всех файлов с нумерацией в одну папку",
+      "Узбекский, русский, английский; светлая и тёмная тема; полностью офлайн"
+    ],
+    "en": [
+      "5 built-in editable templates (President scholarship, research grant, conference, attestation, abroad)",
+      "Statuses: needed / in progress / ready / submitted",
+      "Attach files (drag & drop), open file or folder",
+      "Progress ring and days left for each package",
+      "Windows notifications N days before deadlines (tray)",
+      "Export checklist to PDF and Excel",
+      "Collect all files, numbered, into one folder",
+      "Uzbek, Russian, English; light and dark themes; fully offline"
+    ]
+  },
+  "category": "Ta'lim / ilmiy ish",
+  "topics": [
+    "checklist",
+    "scholarship",
+    "documents",
+    "deadline-reminder"
+  ],
+  "min_os": "Windows 10 (1809+) / Windows 11, x64",
+  "build": {
+    "mode": "onefile",
+    "excludes": [
+      "PIL",
+      "numpy",
+      "matplotlib",
+      "pandas"
+    ]
+  },
+  "font": "Calibri",
+  "palette": {
+    "light": {
+      "bg": "#f6f3ee",
+      "surface": "#fffdf9",
+      "surface2": "#f1ece4",
+      "border": "#e2dacd",
+      "text": "#2a2420",
+      "muted": "#7a6f63",
+      "hover": "#ece5da"
+    },
+    "dark": {
+      "bg": "#1c1a21",
+      "surface": "#25222c",
+      "surface2": "#2e2a36",
+      "border": "#3c3646",
+      "text": "#ece8f2",
+      "muted": "#a7a0b4",
+      "hover": "#342f3d"
+    }
+  }
+}
