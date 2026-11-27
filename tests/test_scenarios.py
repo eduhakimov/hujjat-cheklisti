@@ -137,3 +137,24 @@ def test_ui_bad_threshold_setting(win):
     win.settings.set("thresholds", "7,3")
     assert win.thresholds() == [7, 3, 1, 0]
     win.check_reminders()
+
+
+def test_ui_starts_with_wrong_typed_settings(tmp_path, monkeypatch):
+    monkeypatch.setenv("APPDATA", str(tmp_path / "appdata"))
+    from PySide6.QtWidgets import QApplication
+    from uzkit import app as appmod
+    from uzkit.settings import Settings
+    appmod.META = appmod.load_meta()
+    s = Settings(appmod.META["slug"] + "_bad")
+    s.set("notify_items", "yes")
+    s.set("minimize_to_tray", 1)
+    s.set("thresholds", {"a": 1})
+    appmod.SETTINGS = Settings(appmod.META["slug"] + "_bad")
+    QApplication.instance() or QApplication([])
+    from hujjat_cheklisti import ui_extra, window as wmod
+    monkeypatch.setattr(ui_extra, "_DEMO_DIRS", {})
+    w = wmod.MainWindow()
+    assert w.thresholds() == [7, 3, 1, 0]
+    w.tray.quitting = True
+    w.db.close()
+    w.close()
