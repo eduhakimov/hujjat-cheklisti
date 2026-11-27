@@ -19,6 +19,8 @@ STRINGS = {
     # muddatlar
     "no_deadline": _t("Muddatsiz", "Без срока", "No deadline"),
     "overdue_n": _t("{n} kun o'tdi", "просрочено на {n} дн.", "{n} days overdue"),
+    "overdue_1": _t("1 kun o'tdi", "просрочено на 1 дн.", "1 day overdue"),
+    "days_left_1": _t("1 kun qoldi", "остался 1 дн.", "1 day left"),
     "today": _t("Bugun!", "Сегодня!", "Today!"),
     "days_left_n": _t("{n} kun qoldi", "осталось {n} дн.", "{n} days left"),
     "complete": _t("To'liq tayyor", "Всё готово", "Complete"),
@@ -150,6 +152,7 @@ STRINGS = {
     "remind_before": _t("Muddatdan oldin eslatish:", "Напоминать до срока:", "Remind before the deadline:"),
     "day0": _t("Muddat kuni", "В день срока", "On the day"),
     "n_days": _t("{n} kun", "{n} дн.", "{n} days"),
+    "day1": _t("1 kun", "1 дн.", "1 day"),
     "notify_items": _t("Alohida hujjat muddatlari haqida ham eslatish", "Напоминать и о сроках отдельных документов",
                        "Also remind about individual document due dates"),
     "test_notification": _t("Sinov bildirishnomasi", "Тестовое уведомление", "Test notification"),

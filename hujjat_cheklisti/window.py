@@ -39,10 +39,10 @@ def days_text(dl) -> str:
     if dl is None:
         return tr("no_deadline")
     if dl < 0:
-        return tr("overdue_n", n=-dl)
+        return tr("overdue_1") if dl == -1 else tr("overdue_n", n=-dl)
     if dl == 0:
         return tr("today")
-    return tr("days_left_n", n=dl)
+    return tr("days_left_1") if dl == 1 else tr("days_left_n", n=dl)
 
 
 # =========================================================================== kichik vidjetlar
@@ -463,6 +463,9 @@ class OverviewPage(QWidget):
             tile = PackageTile(p, items)
             tile.clicked.connect(self.win.open_package)
             self.grid.addWidget(tile, i // cols, i % cols)
+            tw = tile.minimumSizeHint().width()
+            if tw > getattr(self, "_tile_w", 340):
+                self._tile_w = tw
         if not pkgs:
             hint = QLabel(tr("empty_overview"))
             hint.setObjectName("Muted")
@@ -471,6 +474,9 @@ class OverviewPage(QWidget):
             hint.setMinimumHeight(160)
             self.grid.addWidget(hint, 0, 0)
         self.grid.setRowStretch(self.grid.rowCount(), 1)
+        if self._columns() != cols:
+            self._cols = self._columns()
+            QTimer.singleShot(0, self.refresh)
         c = logic.counts(all_st)
         self.s_pk.value.setText(str(len(pkgs)))
         self.s_docs.value.setText(f"{c['ready'] + c['submitted']} / {len(all_st)}")
@@ -505,7 +511,9 @@ class OverviewPage(QWidget):
             self.win.open_package(pid)
 
     def _columns(self):
-        return max(1, min(3, self.scroll.viewport().width() // 300))
+        # Kartochkaning haqiqiy eng kichik kengligi bo'yicha (aks holda ikkinchi ustun kesilib qoladi)
+        tw = getattr(self, "_tile_w", 340)
+        return max(1, min(3, (self.scroll.viewport().width() - 4 + 12) // (tw + 12)))
 
     def resizeEvent(self, e):
         super().resizeEvent(e)
@@ -1166,7 +1174,7 @@ class SettingsPage(QWidget):
         self.th_boxes = {}
         cur = set(win.thresholds())
         for t in self.THRESHOLDS:
-            cb = QCheckBox(tr("day0") if t == 0 else tr("n_days", n=t))
+            cb = QCheckBox(tr("day0") if t == 0 else tr("day1") if t == 1 else tr("n_days", n=t))
             cb.setChecked(t in cur)
             cb.toggled.connect(self._save_th)
             self.th_boxes[t] = cb
@@ -1321,7 +1329,10 @@ class MainWindow(BaseMainWindow):
 
     # ------------------------------------------------------------------ umumiy
     def thresholds(self):
-        return self.settings.get("thresholds", [7, 3, 1, 0])
+        v = self.settings.get("thresholds", [7, 3, 1, 0])
+        if not isinstance(v, list):
+            return [7, 3, 1, 0]
+        return [t for t in v if isinstance(t, int) and not isinstance(t, bool) and 0 <= t <= 365]
 
     def apply_tray_mode(self):
         from PySide6.QtWidgets import QApplication
